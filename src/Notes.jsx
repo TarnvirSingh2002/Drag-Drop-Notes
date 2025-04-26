@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 
 export default function Notes({note, setNote}) {
-    console.log("my notes",note);
+    // console.log("my notes",note);
 
-    note.map((ele)=>{
-        console.log(ele);
-    });
+    // note.map((ele)=>{
+    //     console.log(ele);
+    // });
 
     useEffect(()=>{
 
-        const savedNotes=[];
+        const savedNotes=JSON.parse(localStorage.getItem("notes"))||[]; //here all the nodes that are present are saved here
 
         const updatedNotes=note.map((not)=>{
-            const savedNote = null;
+            const savedNote = null; //when new node is added we will compare here
             if(savedNote){
                 return {}
             }
@@ -23,6 +23,8 @@ export default function Notes({note, setNote}) {
         });
 
         setNote(updatedNotes);
+
+        localStorage.setItem("notes",JSON.stringify(updatedNotes));
     },[note.length]);//when new node is add then it is call because it can effect the length
 
     const determineNewPosition=()=>{
@@ -41,14 +43,14 @@ export default function Notes({note, setNote}) {
             note.map((ele,index)=>{
                 return(
                 <div key={index} style={{width:"200px",
-                left:`${(note.position).x}px`,
-                top:`${(note.position).y}px`,
+                left:`${(ele.position)?.x}px`,
+                top:`${(ele.position)?.y}px`,
                 position:"absolute",
                 border:"3px solid black", 
                 padding:"10px",
                 cursor:"move",
                 backgroundColor:"yellow"}}>
-                    📌{ele}</div>)
+                    📌{ele.text}</div>)
             })
         }
       
