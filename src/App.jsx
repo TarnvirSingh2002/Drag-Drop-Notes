@@ -3,9 +3,9 @@ import Notes from "./Notes";
 
 function App() {
   // const[note,setNote]=useState("");
-  const [input, setInput] = useState([{ text: "kikik" },
-    { text: "hgduhcg dfjhuihf jdidhfie ojefoe ojfoen" },
-    { text: "hufgeruf hfhuierb ehfieb iueyf" }]);
+  const [input, setInput] = useState([{id:1, text: "kikik" },
+    { id:2,text: "hgduhcg dfjhuihf jdidhfie ojefoe ojfoen" },
+    { id:3,text: "hufgeruf hfhuierb ehfieb iueyf" }]);
 
   // const handleClick=(e)=>{
   //   if (!note.trim()) return;
