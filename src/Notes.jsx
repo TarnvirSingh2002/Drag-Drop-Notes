@@ -1,7 +1,6 @@
 import React, { createRef, useEffect, useRef, useState } from 'react'
 
 export default function Notes({note, setNote}) {
-    // const [s,setS]=useState(0);
 
     useEffect(()=>{
 
@@ -18,8 +17,6 @@ export default function Notes({note, setNote}) {
             else{//if note is not present inside the "notes" i.e in localStorage"
                 const position = determineNewPosition();//create random position
                 console.log(not,"  ", position);
-                // setS(s+1);
-                // console.log(s);
                 return{...not,position};//assign the position to the not(note) and sore inside the array
             }
 
@@ -44,10 +41,16 @@ export default function Notes({note, setNote}) {
 
     const handleDragId=(note,e)=>{
         const {id} = note;
+        console.log(e.clientX);
+        
         const noteRef = noteRefs.current[id].current;
+        
         const rect = noteRef.getBoundingClientRect();// this method is used to get 
+        // console.log(rect);
         // information about the position of the element on the screen
         const offSetX=e.clientX-rect.left;
+        console.log(offSetX);
+
         const offSetY=e.clientY-rect.top;
         //offSetX, offSetY value set only one time when we click
 
